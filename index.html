@@ -505,6 +505,82 @@
 
     .footer-links a:hover { color: var(--primary); text-decoration: none; }
 
+    /* ── COURSES ── */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .course-card {
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: 18px;
+      padding: 20px 24px;
+      transition: border-color 0.2s;
+    }
+
+    .course-card:hover { border-color: var(--primary); }
+
+    .course-card__code {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .course-card__name {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.224px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .course-card__desc {
+      font-size: 13px;
+      line-height: 1.43;
+      letter-spacing: -0.12px;
+      color: var(--ink-muted-48);
+    }
+
+    /* ── AI USAGE ── */
+    .ai-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 32px;
+      max-width: 720px;
+    }
+
+    .ai-card__row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+
+    .ai-card__row:last-child { margin-bottom: 0; }
+
+    .ai-card__label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--primary-on-dark);
+      min-width: 80px;
+      padding-top: 2px;
+    }
+
+    .ai-card__value {
+      font-size: 15px;
+      line-height: 1.5;
+      letter-spacing: -0.224px;
+      color: var(--body-muted);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .global-nav__links { display: none; }
@@ -517,7 +593,9 @@
       .t-lead { font-size: 21px; }
       .two-col { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
+      .courses-grid { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 90px 1px 1fr; }
+      .ai-card__row { flex-direction: column; gap: 4px; }
       .site-footer__inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -531,6 +609,8 @@
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#ai-usage">AI Usage</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="assets/cv.pdf" download class="global-nav__cta">Download CV</a>
@@ -678,6 +758,78 @@
     </div>
   </section>
 
+  <!-- COURSES — light tile -->
+  <section class="tile tile--light" id="courses">
+    <div class="tile__inner">
+      <p class="t-tagline section-label" style="color:var(--ink-muted-48);">Courses</p>
+      <h2 class="t-display-lg" style="margin-bottom:16px;">What I plan to study.</h2>
+      <p style="font-size:17px;line-height:1.47;letter-spacing:-0.374px;color:var(--ink-muted-48);margin-bottom:48px;">
+        Planned coursework at Seoul National University, focused on AI and systems.
+      </p>
+      <div class="courses-grid">
+
+        <div class="course-card">
+          <div class="course-card__code">4190.310</div>
+          <div class="course-card__name">Programming Languages</div>
+          <div class="course-card__desc">Type systems, semantics, functional and imperative paradigms.</div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-card__code">4190.408</div>
+          <div class="course-card__name">Computer Architecture</div>
+          <div class="course-card__desc">Processor design, memory hierarchy, and hardware-software interface.</div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-card__code">4190.410</div>
+          <div class="course-card__name">Operating Systems</div>
+          <div class="course-card__desc">Process management, memory, file systems, and concurrency.</div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-card__code">4190.414</div>
+          <div class="course-card__name">Introduction to Machine Learning</div>
+          <div class="course-card__desc">Supervised and unsupervised learning, neural networks, optimisation.</div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-card__code">4190.416</div>
+          <div class="course-card__name">Natural Language Processing</div>
+          <div class="course-card__desc">Language models, sequence-to-sequence learning, and transformers.</div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-card__code">4190.567</div>
+          <div class="course-card__name">Deep Learning</div>
+          <div class="course-card__desc">CNNs, RNNs, attention mechanisms, and large-scale training.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AI USAGE — dark tile -->
+  <section class="tile tile--dark" id="ai-usage">
+    <div class="tile__inner">
+      <p class="t-tagline section-label--dark">AI Usage</p>
+      <h2 class="t-display-lg" style="color:var(--on-dark); margin-bottom:48px;">How this site was built.</h2>
+      <div class="ai-card">
+        <div class="ai-card__row">
+          <span class="ai-card__label">Tool</span>
+          <span class="ai-card__value">Replit Agent</span>
+        </div>
+        <div class="ai-card__row">
+          <span class="ai-card__label">Prompt</span>
+          <span class="ai-card__value">"Create and improve a personal GitHub Pages website with profile, CV, projects, contact, courses, and responsive design."</span>
+        </div>
+        <div class="ai-card__row">
+          <span class="ai-card__label">Usage</span>
+          <span class="ai-card__value">Used to scaffold the initial HTML/CSS structure, apply a consistent design system (based on DESIGN.md), and iteratively update content sections including About, Experience, Projects, Courses, and Contact.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT — light tile -->
   <section class="tile tile--light" id="contact">
     <div class="tile__inner">
@@ -711,6 +863,8 @@
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#ai-usage">AI Usage</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="assets/cv.pdf" download>CV</a></li>
       </ul>
