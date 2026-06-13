@@ -1,7 +1,562 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Louie Kwon — Personal Page</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f13;
+      --surface: #1a1a24;
+      --border: #2a2a38;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --text: #e8e8f0;
+      --muted: #8888aa;
+      --radius: 14px;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 15, 19, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 2rem 60px;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-avatar {
+      flex-shrink: 0;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 40px rgba(124, 106, 247, 0.3);
+    }
+
+    .hero-text h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-bio {
+      color: var(--text);
+      font-size: 0.97rem;
+      max-width: 520px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.3rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(124, 106, 247, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent2);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 70px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text);
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+
+    .about-card h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent2);
+      margin-bottom: 0.7rem;
+    }
+
+    .about-card p, .about-card ul {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .about-card ul { padding-left: 1rem; }
+    .about-card ul li { margin-bottom: 0.3rem; }
+
+    /* ── SKILLS ── */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .skill-tag:hover { border-color: var(--accent); }
+
+    /* ── EXPERIENCE ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 119px;
+      top: 28px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+      padding-top: 4px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 113px;
+      top: 6px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-body .company {
+      font-size: 0.87rem;
+      color: var(--accent2);
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-body p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-card p {
+      font-size: 0.87rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .project-tag {
+      background: rgba(124, 106, 247, 0.12);
+      color: var(--accent2);
+      border-radius: 4px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent);
+      text-decoration: none;
+      color: var(--accent2);
+    }
+
+    .contact-icon { font-size: 1.1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .hero-avatar { width: 110px; height: 110px; }
+      .hero-text h1 { font-size: 1.8rem; }
+      .about-grid, .projects-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 90px 1fr; }
+      .timeline-item:not(:last-child)::after { left: 89px; }
+      .timeline-dot { left: 83px; }
+    }
+  </style>
+</head>
 <body>
-  <h1>Welcome to my Personal Page</h1>
-  <p>Hosted on GitHub Pages!</p>
+
+  <nav>
+    <span class="nav-logo">Louie Kwon</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="assets/profile.jpg" alt="Louie Kwon" class="hero-avatar" />
+    <div class="hero-text">
+      <h1>Hi, I'm <span>Louie Kwon</span> 👋</h1>
+      <p class="hero-subtitle">Software Engineer &amp; Builder</p>
+      <p class="hero-bio">
+        I build reliable, well-crafted software — from backend systems to polished web experiences.
+        Passionate about clean code, thoughtful design, and solving real problems.
+      </p>
+      <div class="hero-actions">
+        <a href="assets/cv.pdf" download class="btn btn-primary">⬇ Download CV</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <h2 class="section-title">About</h2>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Background</h3>
+        <p>
+          I'm a software engineer with a strong foundation in computer science and a love for building things that matter.
+          I enjoy working across the full stack and thrive in collaborative, fast-moving environments.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3>Interests</h3>
+        <ul>
+          <li>Distributed systems &amp; backend architecture</li>
+          <li>Web development &amp; UI engineering</li>
+          <li>Open-source contributions</li>
+          <li>Machine learning applications</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-list">
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">TypeScript</span>
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">PostgreSQL</span>
+      <span class="skill-tag">Docker</span>
+      <span class="skill-tag">Git</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">Linux</span>
+      <span class="skill-tag">HTML &amp; CSS</span>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2023 — Present</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <h3>Software Engineer</h3>
+          <div class="company">Company Name</div>
+          <p>Developed and maintained scalable web services, collaborated with cross-functional teams, and led key feature initiatives from design through deployment.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2022 — 2023</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <h3>Software Engineering Intern</h3>
+          <div class="company">Company Name</div>
+          <p>Built internal tooling, improved CI/CD pipelines, and contributed to production features used by thousands of users.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2019 — 2023</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <h3>B.S. Computer Science</h3>
+          <div class="company">University Name</div>
+          <p>Graduated with honors. Coursework in algorithms, systems programming, databases, and machine learning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Project Alpha</h3>
+        <p>A full-stack web application that solves a real-world problem with a clean, intuitive interface and a robust backend.</p>
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">Node.js</span>
+          <span class="project-tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>Project Beta</h3>
+        <p>An open-source CLI tool that automates repetitive developer workflows, saving hours of manual work each week.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">CLI</span>
+          <span class="project-tag">Open Source</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>Project Gamma</h3>
+        <p>A machine learning pipeline that processes and classifies data in real time, deployed as a lightweight REST API.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">ML</span>
+          <span class="project-tag">Docker</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>Project Delta</h3>
+        <p>A data dashboard that visualises key metrics with interactive charts, built for both desktop and mobile screens.</p>
+        <div class="project-tags">
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">D3.js</span>
+          <span class="project-tag">REST API</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-row">
+      <a href="mailto:your@email.com" class="contact-item">
+        <span class="contact-icon">✉️</span> your@email.com
+      </a>
+      <a href="https://github.com/louiekwon0111" target="_blank" rel="noopener" class="contact-item">
+        <span class="contact-icon">🐙</span> github.com/louiekwon0111
+      </a>
+      <a href="https://linkedin.com/in/louiekwon" target="_blank" rel="noopener" class="contact-item">
+        <span class="contact-icon">💼</span> LinkedIn
+      </a>
+      <a href="assets/cv.pdf" download class="contact-item">
+        <span class="contact-icon">📄</span> Download CV
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Louie Kwon · Built with ♥</p>
+  </footer>
+
 </body>
 </html>
