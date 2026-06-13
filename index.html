@@ -677,45 +677,82 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE — parchment tile -->
+  <!-- CV / RESUME — parchment tile -->
   <section class="tile tile--parchment" id="experience">
     <div class="tile__inner">
-      <p class="t-tagline section-label" style="color:var(--ink-muted-48);">Experience</p>
-      <h2 class="t-display-lg" style="margin-bottom:64px;">Where I've studied.</h2>
-      <div class="timeline">
+      <p class="t-tagline section-label" style="color:var(--ink-muted-48);">CV / Resume</p>
+      <h2 class="t-display-lg" style="margin-bottom:8px;">My background.</h2>
+      <p style="font-size:17px;line-height:1.47;letter-spacing:-0.374px;color:var(--ink-muted-48);margin-bottom:16px;">
+        Full CV available as a PDF download.
+      </p>
+      <a href="assets/cv.pdf" download class="btn-secondary" style="margin-bottom:64px;display:inline-block;">⬇ Download CV</a>
 
-        <div class="timeline-item" style="color:var(--ink);">
-          <div class="tl-date" style="color:var(--ink-muted-48);">2025 —</div>
-          <div class="tl-spine" style="background:var(--hairline);">
-            <span style="position:absolute;top:6px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--primary);display:block;"></span>
+      <!-- Education -->
+      <div style="margin-bottom:56px;">
+        <p style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted-48);margin-bottom:24px;">Education</p>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="tl-date" style="color:var(--ink-muted-48);">2025 —</div>
+            <div class="tl-spine" style="background:var(--hairline);">
+              <span style="position:absolute;top:6px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--primary);display:block;"></span>
+            </div>
+            <div class="tl-body" style="padding-left:8px;">
+              <h3 style="color:var(--ink);font-size:17px;font-weight:600;letter-spacing:-0.374px;margin-bottom:2px;">Seoul National University</h3>
+              <div style="font-size:14px;letter-spacing:-0.224px;color:var(--primary);margin-bottom:4px;">B.S. Computer Science &amp; Engineering</div>
+              <p style="font-size:14px;line-height:1.43;letter-spacing:-0.224px;color:var(--ink-muted-48);">Interested in AI research — LLMs, agent architectures, and multimodal systems.</p>
+            </div>
           </div>
-          <div class="tl-body" style="padding-left:8px;">
-            <h3 style="color:var(--ink);font-size:17px;font-weight:600;letter-spacing:-0.374px;margin-bottom:2px;">Seoul National University</h3>
-            <div style="font-size:14px;letter-spacing:-0.224px;color:var(--primary);margin-bottom:6px;">Computer Science &amp; Engineering</div>
+
+          <div class="timeline-item">
+            <div class="tl-date" style="color:var(--ink-muted-48);">2022 — 2024</div>
+            <div class="tl-spine" style="background:var(--hairline);">
+              <span style="position:absolute;top:6px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--primary);display:block;"></span>
+            </div>
+            <div class="tl-body" style="padding-left:8px;">
+              <h3 style="color:var(--ink);font-size:17px;font-weight:600;letter-spacing:-0.374px;margin-bottom:2px;">Hansol High School</h3>
+            </div>
           </div>
+
+          <div class="timeline-item">
+            <div class="tl-date" style="color:var(--ink-muted-48);">2019 — 2021</div>
+            <div class="tl-spine" style="background:var(--hairline);">
+              <span style="position:absolute;top:6px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--primary);display:block;"></span>
+            </div>
+            <div class="tl-body" style="padding-left:8px;">
+              <h3 style="color:var(--ink);font-size:17px;font-weight:600;letter-spacing:-0.374px;margin-bottom:2px;">Gumi Middle School</h3>
+            </div>
+          </div>
+
         </div>
-
-        <div class="timeline-item">
-          <div class="tl-date" style="color:var(--ink-muted-48);">2022 — 2024</div>
-          <div class="tl-spine" style="background:var(--hairline);">
-            <span style="position:absolute;top:6px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--primary);display:block;"></span>
-          </div>
-          <div class="tl-body" style="padding-left:8px;">
-            <h3 style="color:var(--ink);font-size:17px;font-weight:600;letter-spacing:-0.374px;margin-bottom:2px;">Hansol High School</h3>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-date" style="color:var(--ink-muted-48);">2019 — 2021</div>
-          <div class="tl-spine" style="background:var(--hairline);">
-            <span style="position:absolute;top:6px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--primary);display:block;"></span>
-          </div>
-          <div class="tl-body" style="padding-left:8px;">
-            <h3 style="color:var(--ink);font-size:17px;font-weight:600;letter-spacing:-0.374px;margin-bottom:2px;">Gumi Middle School</h3>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Skills -->
+      <div style="margin-bottom:56px;">
+        <p style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted-48);margin-bottom:24px;">Skills</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="skill-chip">C++</span>
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">Java</span>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div>
+        <p style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted-48);margin-bottom:24px;">Experience</p>
+        <div class="utility-card" style="max-width:640px;">
+          <h3 style="color:var(--ink-muted-48);">Course Project</h3>
+          <p style="font-size:17px;font-weight:600;letter-spacing:-0.374px;color:var(--ink);margin-bottom:4px;">OOP Course Project</p>
+          <p style="font-size:14px;line-height:1.43;letter-spacing:-0.224px;color:var(--ink-muted-48);">
+            Designed and implemented a C++ project applying object-oriented programming principles — class hierarchies, encapsulation, and polymorphism.
+          </p>
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+            <span class="skill-chip" style="padding:4px 12px;font-size:12px;">C++</span>
+            <span class="skill-chip" style="padding:4px 12px;font-size:12px;">OOP</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
